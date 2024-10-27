@@ -1,38 +1,388 @@
-.App {
-  text-align: center;
+.container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 600px;
+    width: 80%;
+    display: flex;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.input-wrapper {
+    position: relative;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.input-wrapper .header .description {
+    font-size: 14px;
+    color: rgba(255, 255, 255, .8);
+    margin-bottom: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.input-wrapper .footer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, .2);
+    border-radius: 10px;
+    padding-right: 10px;
+    cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.input-wrapper .footer input {
+    background: transparent;
+    outline: none;
+    border: none;
+    padding: 15px 10px;
+    color: white;
+    font-size: 20px;
+    width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input-wrapper .footer .action-button {
+    background: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: rgba(255, 255, 255, .6);
+    height: 100%;
+}
+
+.input-wrapper .footer .action-button[active="false"] {
+    display: none;
+}
+
+.input-wrapper .footer .action-button .icon {
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.input-wrapper .footer .calendar-icon {
+    color: #777;
+}
+
+.input-wrapper .footer .calendar-body {
+    width: 100%;
+}
+
+.input-wrapper .footer .calendar-body .calendar-opener {
+    background: transparent;
+    outline: none;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    color: white;
+    text-align: left;
+    padding: 15px 10px;
+    font-size: 20px;
+}
+
+.button-body[data-disabled="true"] {
+    background: rgba(255, 255, 255, .5);
+    cursor: not-allowed;
+}
+
+.button-body[data-disabled="true"] {
+    cursor: not-allowed;
+}
+
+.button-body {
+    outline: none;
+    border: none;
+    color: black;
+    background: white;
+    font-size: 16px;
+    text-align: left;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 15px;
+}
+
+.button-body .loader {
+    color: black;
+    animation: spin 1.5s linear infinite;
+    background: transparent;
+}
+
+.button-body .loader[data-hidden="true"] {
+    opacity: 0;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.flex-container {
+    display: flex;
+    width: 100%;
+}
+
+.back-button-container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+.back-button-container .back-button {
+    background: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+    color: #bbb;
+    transition: color .15s;
+}
+
+.back-button-container .back-button:hover {
+    color: white;
+}
+
+.back-button-container .back-button .icon {
+    width: 30px;
+}
+
+.avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar .avatar-placeholder {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+    color: #888;
+    font-size: 20px;
+    border-radius: 50%;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.wrapper {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 15px;
+}
+
+.form-check {
+    width: 100%;
+}
+
+.form-check .error {
+    color: red;
+    font-size: 13px;
+    position: relative;
+}
+
+.form-check .error::before {
+    content: "";
+    position: absolute;
+    left: -15px;
+    /* top: 50%;
+    transform: translateY(-50%); */
+    top: 0;
+    width: 3px;
+    height: 45px;
+    background: red;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form .error-container {
+    margin-bottom: 10px;
+}
+
+.form .error-container .error {
+    color: red;
+    font-size: 13px;
+    position: relative;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: rgba(255, 0, 0, .1);
+}
+
+.link-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 20px;
+    width: 100%;
+    min-width: 250px;
+    padding: 5px 10px;
+    outline: none;
+    border: none;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background .15s ease-in-out, color .15s ease-in-out, transform .15s ease-in-out;
+}
+
+.link-button:hover {
+    background: white;
+    color: black;
+    /* transform: scale(1.02); */
+}
+
+.link-button .icon-right {
+    color: #888;
+}
+
+.link-button header {
+    display: flex;
+    flex-direction: column;
+    row-gap: 3px;
+}
+
+.link-button header .icon {
+    width: 17px;
+}
+
+.link-button header .wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 8px;
+    font-size: 17px;
+}
+
+.link-button header .description {
+    font-size: 14px;
+    color: #777;
+}
+
+.danger {
+    background: rgba(255, 0, 0, .1);
+    color: red;
+}
+
+.danger .icon-right {
+    color: red;
+}
+
+.danger:hover {
+    background: rgba(255, 0, 0, .2);
+    color: red;
+}
+
+.group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    position: relative;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, .2);
+}
+
+.group .group-title {
+    border-bottom: 1px solid rgba(255, 255, 255, .2);
+    padding: 10px;
+}
+
+.group .group-title h2 {
+    font-size: 17px;
+    color: white;
+}
+
+.group .group-title p {
+    font-size: 14px;
+    color: #888;
+}
+
+.group .group-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 10px;
+    padding-top: 0;
+}
+
+.separator {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, .2);
+    margin: 10px 0;
+}
+
+.link-button.variant-ghost {
+    background: transparent;
+    color: white;
+}
+
+.link-button.variant-ghost:hover {
+    background: rgba(255, 255, 255, .1);
+    color: white;
+}
+
+.link-button.variant-filled {
+    background: rgba(255, 255, 255, .1);
+    color: white;
+    border: 1px solid transparent;
+}
+
+.link-button.variant-filled:hover {
+    background: rgba(255, 255, 255, .2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, .2);
+}
+
+.link-button.variant-outline {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, .2);
+}
+
+.link-button.variant-outline:hover {
+    background: rgba(255, 255, 255, .1);
+    color: white;
 }

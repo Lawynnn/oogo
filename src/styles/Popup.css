@@ -1,0 +1,30 @@
+.popup {
+    /* position: relative; */
+    overflow: visible;
+}
+
+.popup .popup-body {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: fit-content;
+    height: fit-content;
+    background: black;
+    min-width: 200px;
+    transition: all .3s ease-in-out;
+}
+
+.popup[data-active="true"] .popup-body {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.popup[data-active="false"] .popup-body {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.popup[data-active="false"][data-float="bottom"] .popup-body {
+    transform: translateY(-10px);
+}

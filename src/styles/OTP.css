@@ -1,0 +1,65 @@
+.otp-input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.otp-input .otp-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+}
+
+.otp-input .otp-slot {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, .2);
+    border-right: 0;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 30px;
+    background: black;
+    text-align: center;
+    outline: none;
+    font-weight: 100;
+    margin: 0;
+    caret-color: transparent;
+}
+
+.otp-input .otp-slot:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.otp-input .otp-slot:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-right: 1px solid rgba(255, 255, 255, .2);
+}
+
+.otp-input .otp-slot:focus {
+    border: 1px solid white;
+}
+
+.otp-separator {
+    background: white;
+    border-radius: 50%;
+    width: 5px;
+    aspect-ratio: 1/1;
+    margin: 0 10px;
+}
+
+.otp-description {
+    color: #999;
+    font-size: 14px;
+    margin: 10px 0;
+    text-align: center;
+}

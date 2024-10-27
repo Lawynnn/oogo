@@ -1,0 +1,92 @@
+.day-names,
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    gap: 5px;
+}
+
+.calendar {
+    padding: .75rem;
+    border: 1px solid rgba(255, 255, 255, .2);
+    border-radius: 10px;
+    user-select: none;
+    background: black;
+}
+
+.calendar .calendar-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.calendar .calendar-header .calendar-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, .2);
+    padding: 3px 6px;
+    border-radius: 7px;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    transition: background .15s;
+}
+
+.calendar .calendar-header .calendar-button:hover {
+    background: rgba(255, 255, 255, .1);
+}
+
+.calendar .calendar-header .calendar-button .icon {
+    width: 16px;
+}
+
+.calendar .calendar-header .calendar-title {
+    font-size: 14px;
+    color: white;
+}
+
+.calendar .calendar-footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar .calendar-footer .days-names {
+    color: #aaa;
+    font-size: 14px;
+    column-gap: 15px;
+    margin-bottom: 10px;
+}
+
+.calendar .calendar-footer .days-names .day-name {
+    padding: 10px;
+    text-align: center;
+}
+
+.calendar .calendar-footer .days {
+    color: white;
+    font-size: 15px;
+}
+
+.calendar .calendar-footer .days .day {
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px;
+    transition: background .15s;
+}
+
+.calendar .calendar-footer .days .day[data-selected="true"] {
+    background: white;
+    color: black;
+}
+
+.calendar .calendar-footer .days .day:hover:not(.day[data-selected="true"]) {
+    background: rgba(255, 255, 255, .1);
+}
+
+.calendar .calendar-footer .day-fill {
+    color: #666;
+}
