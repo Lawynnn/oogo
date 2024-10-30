@@ -6,7 +6,7 @@
 .combo-wrapper .combo-box {
     width: 100%;
     padding: 10px 15px;
-    border: 1px solid rgba(255, 255, 255, .2);
+    border: 1px solid var(--light);
     border-radius: 8px;
     display: flex;
     flex-direction: row;
@@ -31,9 +31,9 @@
 }
 
 .combo-wrapper .combo {
-    background: black;
+    background: var(--bg);
     z-index: 1;
-    border: 1px solid rgba(255, 255, 255, .2);
+    border: 1px solid var(--light);
     position: absolute;
     top: calc(100% + 10px);
     width: 100%;
@@ -58,7 +58,7 @@
 
 .combo-wrapper .combo .combo-header {
     width: 100%;
-    border-bottom: 1px solid rgba(255, 255, 255, .2);
+    border-bottom: 1px solid var(--light);
     padding: 8px;
     display: flex;
     flex-direction: row;
@@ -70,7 +70,7 @@
     width: 100%;
     background: transparent;
     border: none;
-    color: white;
+    color: var(--text-primary);
     outline: none;
     border: none;
     font-size: 17px;
@@ -97,20 +97,20 @@
 }
 
 .combo-wrapper .combo .combo-body .combo-item .combo-item-header h2 {
-    color: white;
+    color: var(--text-primary);
     font-weight: 500;
     font-size: 16px;
     margin: 0;
 }
 
 .combo-wrapper .combo .combo-body .combo-item .combo-item-header p {
-    color: #888;
+    color: var(--text-secondary);
     font-size: 13px;
     margin: 0;
 }
 
 .combo-wrapper .combo .combo-body .combo-item:hover:not(.combo-item-error) {
-    background: rgba(255, 255, 255, .1);
+    background: var(--lighter);
 }
 
 .combo-wrapper .combo .combo-body .combo-item-error {
@@ -139,7 +139,7 @@
 }
 
 .combo-wrapper .combo .combo-body::-webkit-scrollbar-thumb {
-    background: white;
+    background: var(--primary);
     border-radius: 5px;
 }
 

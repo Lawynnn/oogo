@@ -5,7 +5,7 @@ import React from "react";
  * @typedef LinkButtonProps
  * @property {string} href
  * @property {?React.ReactNode} icon
- * @property {?boolean} iconed right icon displayed
+ * @property {?boolean|React.ReactElement} iconed right icon displayed
  * @property {?string} desc
  * @property {'outline'|'filled'|'ghost'} variant
  */
@@ -18,6 +18,7 @@ import React from "react";
 export default function LinkButton(props) {
     const { href, icon, iconed = true, desc, variant = "ghost" } = props;
     const Icon = icon;
+    const Iconed = iconed;
     return (
         <button
             {...props}
@@ -39,7 +40,7 @@ export default function LinkButton(props) {
                 </div>
                 {desc && <p className="description">{desc}</p>}
             </header>
-            {iconed && <ChevronRight className="icon-right" />}
+            {iconed === true ?  <ChevronRight className="icon-right" /> : iconed === false ? "" : <Iconed className="icon-right" />}
         </button>
     );
 }

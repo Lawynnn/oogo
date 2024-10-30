@@ -6,13 +6,23 @@ import { Popup } from "../components/Popup";
 import ComboBox from "../components/ComboBox";
 import RideSearch from "../components/RideSearch";
 import LinkButton from "../components/LinkButton";
-import { Group } from "../components/Group";
+import Group from "../components/Group";
 import Avatar from "../components/Avatar";
 import InputComponent from "../components/InputComponent";
 import ButtonComponent from "../components/ButtonComponent";
-import { Save } from "lucide-react";
+import {
+    ArrowRight,
+    Facebook,
+    Instagram,
+    MoveRight,
+    Palette,
+    Save,
+    Twitter,
+} from "lucide-react";
 import BackButton from "../components/BackButton";
 import Form from "../components/Form";
+import Flex from "../components/Flex";
+import Card from "../components/Card";
 
 export default function Home() {
     const [user, setUser] = React.useState(null);
@@ -57,52 +67,196 @@ export default function Home() {
                     <RideSearch></RideSearch>
                 </div>
             </NavComponent>
-            <Container
-                gap="10px"
-                dir="column"
-                justify="flex-end"
-                align="flex-end"
-            >
-                <Group title="My awesome group" description="Ceva grupa misto">
-                    <Group
-                        title="Avatar Settings"
-                        description="Modifica setarile avatarului"
-                    >
-                        <BackButton></BackButton>
-                        <LinkButton href="/settings">
-                            Modifică setările
-                        </LinkButton>
-                        <Form.Check>
-                            <InputComponent
-                                type="text"
-                                placeholder="Ceva test"
-                                check={(v) => {
-                                    if (!v)
-                                        return {
-                                            success: false,
-                                            message: "Câmpul este obligatoriu",
-                                        };
-                                    return { success: true };
-                                }}
-                            ></InputComponent>
-                        </Form.Check>
+            <Flex className="sections" dir="column" align="center" gap="0px">
+                <h1 className="big-title">
+                    Caută curse spre locația dorită, și în siguranță
+                </h1>
 
-                        <Avatar src={avatar}>
-                            <Avatar.Placeholder>BUT</Avatar.Placeholder>
-                        </Avatar>
-                        <ButtonComponent
-                            text="Salvează"
-                            icon={Save}
-                        ></ButtonComponent>
-                    </Group>
-                    <ComboBox
-                        search={true}
-                        items={items}
-                        placeholder={"Nicio mașină selectată"}
-                        searchplaceholder={"Caută o mașină..."}
-                    ></ComboBox>
-                </Group>
-            </Container>
+                <Flex
+                    className="section secondary-section features-section"
+                    dir="row"
+                    align="center"
+                    justify="space-evenly"
+                    gap="10px"
+                >
+                    <Card
+                        circle="left"
+                        title="Încredere maximă"
+                        description="Călătorești în siguranță, cu mașini atent verificate de echipa Oogo."
+                    />
+                    <Card
+                        circle="left"
+                        title="Preferințele curselor"
+                        description="Ai șansa de ați alege preferințele cursei pe care o dorești."
+                    />
+                    <Card
+                        circle="right"
+                        title="Costuri reduse"
+                        description="Economisește bani cu curse accesibile pentru toate buzunarele."
+                    />
+                    <Card
+                        circle="right"
+                        title="Curse oriunde"
+                        description="Ajungi rapid la destinația ta oriunde în România."
+                    />
+                </Flex>
+                <Flex
+                    className="section bg-section search-section"
+                    dir="column"
+                    align="center"
+                    justify="center"
+                >
+                    <LinkButton
+                        iconed={MoveRight}
+                        className="search-rides-btn"
+                        variant="filled"
+                    >
+                        Caută curse astăzi
+                    </LinkButton>
+                </Flex>
+                <Flex
+                    className="section primary-section shield-section"
+                    dir="row"
+                    align="center"
+                    justify="space-between"
+                >
+                    <h1 className="big-title">
+                        Siguranța ta este în mâinile noastre
+                    </h1>
+                    <LinkButton
+                        iconed={false}
+                        className="safe-btn"
+                        variant="filled"
+                    >
+                        Ajută-ne să te protejăm
+                    </LinkButton>
+                </Flex>
+                <Flex
+                    className="section bg-section most-searched-section"
+                    dir="column"
+                    align="center"
+                    justify="center"
+                    gap="20px"
+                >
+                    <h1 className="big-title">Cele mai căutate curse</h1>
+                    <Flex
+                        className="buttons"
+                        dir="row"
+                        align="center"
+                        justify="space-evenly"
+                    >
+                        <LinkButton
+                            iconed={false}
+                            className="most-searched-btn"
+                            variant="outline"
+                        >
+                            București <ArrowRight className="icon" /> Constanța
+                        </LinkButton>
+                        <LinkButton
+                            iconed={false}
+                            className="most-searched-btn"
+                            variant="outline"
+                        >
+                            Iași <ArrowRight className="icon" /> București
+                        </LinkButton>
+                        <LinkButton
+                            iconed={false}
+                            className="most-searched-btn"
+                            variant="outline"
+                        >
+                            Cluj-Napoca <ArrowRight className="icon" />{" "}
+                            Timișoara
+                        </LinkButton>
+                    </Flex>
+                </Flex>
+                <Flex
+                    className="section secondary-section publish-section"
+                    dir="row"
+                    align="center"
+                    justify="space-between"
+                >
+                    <LinkButton
+                        iconed={false}
+                        className="publish-btn"
+                        variant="filled"
+                    >
+                        Publică o cursă acum
+                    </LinkButton>
+                    <h1 className="big-title">
+                        Economisește 100% din valoarea cursei
+                    </h1>
+                </Flex>
+                <Flex
+                    className="section tertiary-section footer-section"
+                    dir="row"
+                    align="center"
+                    justify="space-between"
+                >
+                    <div className="card card-btns">
+                        <LinkButton className="btn-link" href="/about">
+                            Despre noi
+                        </LinkButton>
+                        <LinkButton className="btn-link" href="/how-it-works">
+                            Cum funcționează
+                        </LinkButton>
+                        <LinkButton className="btn-link" href="/security">
+                            Securitate
+                        </LinkButton>
+                        <LinkButton className="btn-link" href="/support">
+                            Suport clienți
+                        </LinkButton>
+                    </div>
+                    <Flex className="middle-part" dir="column" align="center">
+                        <div className="v-separator"></div>
+                        <LinkButton className="tos-button" href="/tos" iconed={false}>
+                            Termeni și condiții
+                        </LinkButton>
+                        <img
+                            src="/assets/oogoLogoWhite.png"
+                            alt="Logo Small"
+                            className="logo"
+                        />
+                    </Flex>
+                    <Flex className="links" dir="column" align="center">
+                        <LinkButton
+                            className="link-btn"
+                            variant="ghost"
+                            href="#darkmode"
+                            icon={Palette}
+                            iconed={false}
+                        >
+                            Schimbă tema
+                        </LinkButton>
+                        <LinkButton
+                            className="link-btn"
+                            variant="ghost"
+                            href="#facebok"
+                            icon={Facebook}
+                            iconed={false}
+                        >
+                            Facebook
+                        </LinkButton>
+                        <LinkButton
+                            className="link-btn"
+                            variant="ghost"
+                            href="#instagram"
+                            icon={Instagram}
+                            iconed={false}
+                        >
+                            Instagram
+                        </LinkButton>
+                        <LinkButton
+                            className="link-btn"
+                            variant="ghost"
+                            href="#twitter"
+                            icon={Twitter}
+                            iconed={false}
+                        >
+                            Twitter
+                        </LinkButton>
+                    </Flex>
+                </Flex>
+            </Flex>
         </>
     );
 }

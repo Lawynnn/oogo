@@ -1,14 +1,23 @@
 import React from "react";
 
+/**
+ *
+ * @param {{ children: React.ReactNode, src: string, alt: string, size: string, ...props: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> }} props
+ * @returns
+ */
 export default function Avatar({ children, ...props }) {
     const [state, setState] = React.useState("loading");
     React.useEffect(() => {
-        if(!props.src) {
+        if (!props.src) {
             setState("error");
         }
     }, [state, props.src]);
     return (
-        <div className="avatar" {...props}>
+        <div
+            style={props.size ? { width: props.size, height: props.size } : {}}
+            className="avatar"
+            {...props}
+        >
             <img
                 src={props.src}
                 alt={props.alt}
@@ -21,6 +30,6 @@ export default function Avatar({ children, ...props }) {
     );
 }
 
-Avatar.Placeholder = ({children}) => {
+Avatar.Placeholder = ({ children }) => {
     return <div className="avatar-placeholder">{children.toString()}</div>;
-}
+};

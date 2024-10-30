@@ -6,6 +6,8 @@ import API from "../api";
 import { Check, ChevronRight } from "lucide-react";
 import Form from "../components/Form";
 import Alert from "../components/Alert";
+import NavComponent from "../components/NavComponent";
+import { Group } from "../components/Group";
 
 export default function Login() {
     const [loading, setLoading] = React.useState(false);
@@ -27,6 +29,7 @@ export default function Login() {
 
     return (
         <>
+            <NavComponent></NavComponent>
             <Container dir="col" gap="10px" align="flex-start">
                 <Form error={error}>
                     <Form.Check

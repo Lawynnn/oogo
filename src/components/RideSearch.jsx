@@ -1,5 +1,9 @@
 import React from "react";
 
 export default function RideSearch(props) {
-    return <div>RideSearch</div>;
+    return (
+        <div className="ride-search-wrapper">
+            
+        </div>
+    )
 }

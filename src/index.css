@@ -1,9 +1,41 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 :root {
-    --bg: #000;
-    --text: #ddd;
-    --primary: #2e4dff;
+    --bg: black;
+    --primary: white;
+    --secondary: #777;
+
+    --text-primary: white;
+    --text-secondary: #888;
+    --text-active: #f0f0f0;
+
+    --dark: rgba(0, 0, 0, .15);
+    --light: rgba(255, 255, 255, .2);
+    --lighter: rgba(255, 255, 255, .1);
+    --disabled: rgba(255, 255, 255, .5);
+
+    --go_white: #FFFFFF;
+    --go_black: #000000;
+
+    --go_primary: #48D7FF;
+    --go_secondary: #C6F3FF;
+    --go_tertiary: #2A5D6A;
+    --go_text: #2A5D6A;
+    --go_card: #FFFFFF;
+    --go_border: #F5F5F5;
+    --go_bg: #FFFFFF;
+    
+    --go_dark_primary: #067594;
+    --go_dark_secondary: #1D353C;
+    --go_dark_tertiary: #38A1BE;
+    --go_dark_text: #BDE0E9;
+    --go_dark_card: #172123;
+    --go_dark_border: #27383C;
+    --go_dark_bg: #172123;
+
+    --go_br_primary: 101px;
+    --go_br_secondary: 50px;
+
 }
 
 * {
@@ -17,10 +49,11 @@ body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: var(--bg);
-    color: var(--text);
+    background: var(--go_bg);
+    color: var(--go_text);
     width: 100%;
     overflow-x: hidden;
+    height: 100vh;
 }
 
 code {

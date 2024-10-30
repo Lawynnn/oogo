@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './routes/Home';
 import Login from './routes/Login';
 import Register from './routes/Register';
-import Logout from './routes/Logout';
+import Profile from './routes/Profile';
 
 function App() {
     return (
@@ -13,7 +13,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register/>} />
-                <Route path="/logout" element={<Logout />} />
+                <Route path="/profile" element={<Profile />} />
             </Routes>
         </Router>
     )

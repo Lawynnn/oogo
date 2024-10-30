@@ -33,13 +33,13 @@ export default function NavComponent(props) {
         <>
             <div className="navbar-wrapper">
                 <nav className="navbar">
-                    <header className="navbar-header">
+                    <header className="navbar-header" onClick={(e) => (window.location.href = "/")}>
                         <img
                             className="navbar-logo"
-                            onClick={(e) => (window.location.href = "/")}
-                            src="/assets/CarTravelSmall.png"
+                            src="/assets/oogoLogoWhite.png"
                             alt="Logo"
                         />
+                        {/* <span className="logo-text">oogo.</span> */}
                     </header>
                     <footer className="navbar-footer">
                         <Popup
