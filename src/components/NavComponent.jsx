@@ -54,7 +54,7 @@ export default function NavComponent(props) {
                                 >
                                     <Avatar.Placeholder>
                                         {user?.names?.first[0] +
-                                            user?.names?.last[0] || "CT"}
+                                            user?.names?.last[0] || "GO"}
                                     </Avatar.Placeholder>
                                 </Avatar>
                             }

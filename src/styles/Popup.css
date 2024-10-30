@@ -10,9 +10,11 @@
     z-index: 100;
     width: fit-content;
     height: fit-content;
-    background: var(--bg);
+    background: var(--go_primary);
+    border: 10px solid var(--go_secondary);
     min-width: 200px;
     transition: all .3s ease-in-out;
+    border-radius: var(--go_br_secondary);
 }
 
 .popup[data-active="true"] .popup-body {

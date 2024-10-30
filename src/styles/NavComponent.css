@@ -7,6 +7,7 @@
     /* overflow: hidden; */
     background: var(--go_primary);
     z-index: 10;
+    backdrop-filter: blur(10px);
 }
 
 .navbar-wrapper .navbar {

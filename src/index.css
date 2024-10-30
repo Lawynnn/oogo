@@ -21,6 +21,7 @@
     --go_secondary: #C6F3FF;
     --go_tertiary: #2A5D6A;
     --go_text: #2A5D6A;
+    --go_text_secondary: #567981;
     --go_card: #FFFFFF;
     --go_border: #F5F5F5;
     --go_bg: #FFFFFF;
@@ -29,12 +30,14 @@
     --go_dark_secondary: #1D353C;
     --go_dark_tertiary: #38A1BE;
     --go_dark_text: #BDE0E9;
+    --go_dark_text_secondary: #BDE0E9;
     --go_dark_card: #172123;
     --go_dark_border: #27383C;
     --go_dark_bg: #172123;
 
     --go_br_primary: 101px;
     --go_br_secondary: 50px;
+    --go_br_tertiary: 25px;
 
 }
 

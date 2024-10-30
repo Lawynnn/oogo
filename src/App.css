@@ -256,25 +256,25 @@
     column-gap: 20px;
     width: 100%;
     min-width: 250px;
-    padding: 5px 10px;
+    padding: 10px 20px;
     outline: none;
     border: none;
     background: transparent;
-    color: var(--text-primary);
+    color: var(--go_text);
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: var(--go_br_tertiary);
     transition: background 0.15s ease-in-out, color 0.15s ease-in-out,
         transform 0.15s ease-in-out;
 }
 
 .link-button:hover {
-    background: var(--primary);
+    background: var(--go_secondary);
     color: var(--bg);
     /* transform: scale(1.02); */
 }
 
 .link-button .icon-right {
-    color: var(--text-secondary);
+    color: var(--go_text);
 }
 
 .link-button header {
@@ -293,11 +293,12 @@
     align-items: center;
     column-gap: 8px;
     font-size: 17px;
+    color: var(--go_text);
 }
 
 .link-button header .description {
     font-size: 14px;
-    color: #777;
+    color: var(--go_text_secondary);
 }
 
 .danger {
@@ -361,7 +362,7 @@
 }
 
 .link-button.variant-ghost:hover {
-    background: var(--lighter);
+    background: var(--go_secondary);
     color: var(--text-primary);
 }
 
@@ -519,13 +520,20 @@
 .sections .section.footer-section .card-btns {
     max-width: 350px;
     width: 100%;
+    height: fit-content;
 }
 
 .sections .section.footer-section .card-btns .btn-link {
     position: relative;
+    background: var(--go_card);
+}
+
+.sections .section.footer-section .card-btns .btn-link:hover::before {
+    transform: scale(1.5) translateY(calc(-50% + 2px));
 }
 
 .sections .section.footer-section .card-btns .btn-link::before {
+    transition: transform 0.15s ease-in-out;
     content: "";
     position: absolute;
     left: -10px;
@@ -555,7 +563,7 @@
 }
 
 .sections .section.footer-section .middle-part .tos-button {
-    background: var(--go_tertiary);
+    background: var(--go_secondary);
     color: var(--go_white);
     padding: 20px 20px;
     border-radius: var(--go_br_primary);
@@ -567,6 +575,10 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+
+.sections .section.footer-section .middle-part .tos-button header .wrapper {
+    font-size: 18px;
 }
 
 .sections .section.footer-section .middle-part .logo {
@@ -582,4 +594,8 @@
     background: transparent;
     color: var(--go_primary);
     width: 100%;
+}
+
+.sections .section.footer-section .links .link-btn header .wrapper {
+    color: var(--go_primary)
 }
