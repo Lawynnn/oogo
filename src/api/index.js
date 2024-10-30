@@ -16,13 +16,13 @@ export default class API {
                 return err.response.data;
             });
         }
-        catch(e) {
+        catch (e) {
             return {
                 success: false,
                 error: e.message
             }
         }
-        
+
     }
 
     /**
@@ -47,7 +47,7 @@ export default class API {
      * @returns {{__expires: number}}
      */
     static getCache(idx) {
-        if(!localStorage.getItem(idx)) {
+        if (!localStorage.getItem(idx)) {
             return null;
         }
 
@@ -58,17 +58,91 @@ export default class API {
         localStorage.removeItem(idx);
     }
 
+    /**
+     * 
+     * @returns {'light'|'dark'}
+     */
+    static getTheme() {
+        return localStorage.getItem("theme") || "light";
+    }
+
+    /**
+     * 
+     * @param {string|'light'|'dark'} theme 
+     */
+    static setTheme(theme) {
+        localStorage.setItem("theme", theme);
+    }
+
+    static updateTheme() {
+        const theme = this.getTheme();
+        const root = document.documentElement;
+        console.log(theme, root);
+
+        root.style.setProperty(
+            "--go_primary",
+            `var(--go_${theme}_primary)`
+        );
+        root.style.setProperty(
+            "--go_secondary",
+            `var(--go_${theme}_secondary)`
+        );
+        root.style.setProperty(
+            "--go_tertiary",
+            `var(--go_${theme}_tertiary)`
+        );
+        root.style.setProperty(
+            "--go_text",
+            `var(--go_${theme}_text)`
+        );
+        root.style.setProperty(
+            "--go_text_secondary",
+            `var(--go_${theme}_text_secondary)`
+        );
+        root.style.setProperty(
+            "--go_card",
+            `var(--go_${theme}_card)`
+        );
+        root.style.setProperty(
+            "--go_border",
+            `var(--go_${theme}_border)`
+        );
+        root.style.setProperty(
+            "--go_bg",
+            `var(--go_${theme}_bg)`
+        );
+        if (theme === "light") {
+            root.style.setProperty(
+                "--go_white",
+                "#fff"
+            );
+            root.style.setProperty(
+                "--go_black",
+                "#000"
+            );
+        } else {
+            root.style.setProperty(
+                "--go_white",
+                "#000"
+            );
+            root.style.setProperty(
+                "--go_black",
+                "#fff"
+            );
+        }
+    }
+
     static notExistsOrExpiredCache(idx) {
         const data = this.getCache(idx);
-        if(!data) {
+        if (!data) {
             return true;
         }
 
-        if(data.__expires <= 0) {
+        if (data.__expires <= 0) {
             return false;
         }
 
-        if(data.__expires < new Date().getTime()) {
+        if (data.__expires < new Date().getTime()) {
             return true;
         }
 

@@ -17,16 +17,16 @@
     --go_white: #FFFFFF;
     --go_black: #000000;
 
-    --go_primary: #48D7FF;
-    --go_secondary: #C6F3FF;
-    --go_tertiary: #2A5D6A;
-    --go_text: #2A5D6A;
-    --go_text_secondary: #567981;
-    --go_card: #FFFFFF;
-    --go_border: #F5F5F5;
-    --go_bg: #FFFFFF;
+    --go_primary: var(--go_light_primary);
+    --go_secondary: var(--go_light_secondary);
+    --go_tertiary: var(--go_light_tertiary);
+    --go_text: var(--go_light_text);
+    --go_text_secondary: var(--go_light_text_secondary);
+    --go_card: var(--go_light_card);
+    --go_border: var(--go_light_border);
+    --go_bg: var(--go_light_bg);
     
-    --go_dark_primary: #067594;
+    --go_dark_primary: #05556b;
     --go_dark_secondary: #1D353C;
     --go_dark_tertiary: #38A1BE;
     --go_dark_text: #BDE0E9;
@@ -34,6 +34,15 @@
     --go_dark_card: #172123;
     --go_dark_border: #27383C;
     --go_dark_bg: #172123;
+
+    --go_light_primary: #48D7FF;
+    --go_light_secondary: #C6F3FF;
+    --go_light_tertiary: #2A5D6A;
+    --go_light_text: #2A5D6A;
+    --go_light_text_secondary: #567981;
+    --go_light_card: #FFFFFF;
+    --go_light_border: #F5F5F5;
+    --go_light_bg: #FFFFFF;
 
     --go_br_primary: 101px;
     --go_br_secondary: 50px;

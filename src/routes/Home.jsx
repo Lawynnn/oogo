@@ -59,6 +59,7 @@ export default function Home() {
         }
         setUser(u);
         setAvatar(u.avatar);
+        API.updateTheme();
     }, []);
     return (
         <>
@@ -208,7 +209,11 @@ export default function Home() {
                     </div>
                     <Flex className="middle-part" dir="column" align="center">
                         <div className="v-separator"></div>
-                        <LinkButton className="tos-button" href="/tos" iconed={false}>
+                        <LinkButton
+                            className="tos-button"
+                            href="/tos"
+                            iconed={false}
+                        >
                             Termeni și condiții
                         </LinkButton>
                         <img
@@ -221,9 +226,17 @@ export default function Home() {
                         <LinkButton
                             className="link-btn"
                             variant="ghost"
-                            href="#darkmode"
                             icon={Palette}
                             iconed={false}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                const theme = API.getTheme();
+                                API.setTheme(
+                                    theme === "light" ? "dark" : "light"
+                                );
+
+                                API.updateTheme();
+                            }}
                         >
                             Schimbă tema
                         </LinkButton>
