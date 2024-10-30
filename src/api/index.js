@@ -51,10 +51,10 @@ export default class API {
             return null;
         }
 
-        if(this.notExistsOrExpiredCache(idx)) {
-            this.deleteCache(idx);
-            return null;
-        }
+        // if(this.expiredCache(idx)) {
+        //     this.deleteCache(idx);
+        //     return null;
+        // }
 
         return JSON.parse(localStorage.getItem(idx));
     }
@@ -137,10 +137,18 @@ export default class API {
         }
     }
 
-    static notExistsOrExpiredCache(idx) {
+    static expiredCache(idx) {
         const data = this.getCache(idx);
         if (!data) {
             return true;
+        }
+
+        if(typeof(data) !== "object") {
+            return true;
+        }
+
+        if(!data.__expires) {
+            return false;
         }
 
         if (data.__expires <= 0) {
@@ -152,6 +160,15 @@ export default class API {
         }
 
         return false;
+    }
+
+    static notExistsOrExpiredCache(idx) {
+        const data = this.getCache(idx);
+        if (!data) {
+            return true;
+        }
+
+        return this.expiredCache(idx);
     }
 
     static async login(email, password) {
