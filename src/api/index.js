@@ -51,6 +51,11 @@ export default class API {
             return null;
         }
 
+        if(this.notExistsOrExpiredCache(idx)) {
+            this.deleteCache(idx);
+            return null;
+        }
+
         return JSON.parse(localStorage.getItem(idx));
     }
 
