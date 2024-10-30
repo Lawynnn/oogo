@@ -1,3 +1,6 @@
-# Car Travel
-This application was made by @lawynnn, for now is in production mode.
-I work alone on this app and was entierly made by me.
+![oogo Logo](./public/assets/oogoLogoWhite.png)
+
+### Reduce your next travel costs
+### Go anywhere in Romania with affordable prices
+### Verified drivers by our team
+### Find your preferences
