@@ -19,6 +19,7 @@ export default function Login() {
     const [showAlert, setShowAlert] = React.useState(false);
 
     React.useEffect(() => {
+        API.updateTheme();
         (async () => {
             const data = await API.getConfig();
             if (data.success) setConfig(data.config);

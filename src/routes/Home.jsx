@@ -53,13 +53,13 @@ export default function Home() {
     ];
 
     React.useEffect(() => {
+        API.updateTheme();
         const u = API.getCache("user");
         if (!u) {
             return console.log("UNAUTHORIZED");
         }
         setUser(u);
         setAvatar(u.avatar);
-        API.updateTheme();
     }, []);
     return (
         <>
