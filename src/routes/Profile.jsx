@@ -14,6 +14,7 @@ export default function Profile() {
     const [avatar, setAvatar] = React.useState(null);
 
     React.useEffect(() => {
+        API.updateTheme();
         const u = API.getCache("user");
         if (!u) {
             return (window.location.href = "/login");

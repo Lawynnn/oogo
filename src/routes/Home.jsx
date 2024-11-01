@@ -1,65 +1,29 @@
 import React from "react";
 import API from "../api";
-import Container from "../components/Container";
 import NavComponent from "../components/NavComponent";
-import { Popup } from "../components/Popup";
-import ComboBox from "../components/ComboBox";
 import RideSearch from "../components/RideSearch";
 import LinkButton from "../components/LinkButton";
-import Group from "../components/Group";
-import Avatar from "../components/Avatar";
-import InputComponent from "../components/InputComponent";
-import ButtonComponent from "../components/ButtonComponent";
 import {
     ArrowRight,
     Facebook,
     Instagram,
     MoveRight,
     Palette,
-    Save,
     Twitter,
 } from "lucide-react";
-import BackButton from "../components/BackButton";
-import Form from "../components/Form";
 import Flex from "../components/Flex";
 import Card from "../components/Card";
+import { useParams } from "react-router-dom";
 
 export default function Home() {
-    const [user, setUser] = React.useState(null);
-    const [avatar, setAvatar] = React.useState(null);
-    const [pop, setPop] = React.useState(false);
-
-    const items = [
-        {
-            name: "Ford",
-            description: "Mașină populară în Europa",
-        },
-        {
-            name: "Chevrolet",
-            description: "Mașină populară în America",
-        },
-        {
-            name: "Toyota",
-            description: "Mașină populară în Asia",
-        },
-        {
-            name: "Volkswagen",
-            description: "Mașină populară în Europa",
-        },
-        {
-            name: "BMW",
-            description: "Mașină de lux",
-        },
-    ];
+    const params = useParams();
+    const [language, setLanguage] = React.useState(API.language);
 
     React.useEffect(() => {
         API.updateTheme();
-        const u = API.getCache("user");
-        if (!u) {
-            return console.log("UNAUTHORIZED");
-        }
-        setUser(u);
-        setAvatar(u.avatar);
+        API.setLanguage(params);
+        setLanguage(API.language);
+        console.log(API.language);
     }, []);
     return (
         <>
@@ -70,7 +34,7 @@ export default function Home() {
             </NavComponent>
             <Flex className="sections" dir="column" align="center" gap="0px">
                 <h1 className="big-title">
-                    Caută curse spre locația dorită, și în siguranță
+                    {API.getTranslation("header_1", language)}
                 </h1>
 
                 <Flex
@@ -82,23 +46,23 @@ export default function Home() {
                 >
                     <Card
                         circle="left"
-                        title="Încredere maximă"
-                        description="Călătorești în siguranță, cu mașini atent verificate de echipa Oogo."
+                        title={API.getTranslation("feature_1_title", language)}
+                        description={API.getTranslation("feature_1", language)}
                     />
                     <Card
                         circle="left"
-                        title="Preferințele curselor"
-                        description="Ai șansa de ați alege preferințele cursei pe care o dorești."
+                        title={API.getTranslation("feature_2_title", language)}
+                        description={API.getTranslation("feature_2", language)}
                     />
                     <Card
                         circle="right"
-                        title="Costuri reduse"
-                        description="Economisește bani cu curse accesibile pentru toate buzunarele."
+                        title={API.getTranslation("feature_3_title", language)}
+                        description={API.getTranslation("feature_3", language)}
                     />
                     <Card
                         circle="right"
-                        title="Curse oriunde"
-                        description="Ajungi rapid la destinația ta oriunde în România."
+                        title={API.getTranslation("feature_4_title", language)}
+                        description={API.getTranslation("feature_4", language)}
                     />
                 </Flex>
                 <Flex
@@ -112,7 +76,7 @@ export default function Home() {
                         className="search-rides-btn"
                         variant="filled"
                     >
-                        Caută curse astăzi
+                        {API.getTranslation("search_rides", language)}
                     </LinkButton>
                 </Flex>
                 <Flex
@@ -122,14 +86,14 @@ export default function Home() {
                     justify="space-between"
                 >
                     <h1 className="big-title">
-                        Siguranța ta este în mâinile noastre
+                        {API.getTranslation("header_2", language)}
                     </h1>
                     <LinkButton
                         iconed={false}
                         className="safe-btn"
                         variant="filled"
                     >
-                        Ajută-ne să te protejăm
+                        {API.getTranslation("help_for_help", language)}
                     </LinkButton>
                 </Flex>
                 <Flex
@@ -139,7 +103,7 @@ export default function Home() {
                     justify="center"
                     gap="20px"
                 >
-                    <h1 className="big-title">Cele mai căutate curse</h1>
+                    <h1 className="big-title">{API.getTranslation("header_3", language)}</h1>
                     <Flex
                         className="buttons"
                         dir="row"
@@ -181,10 +145,10 @@ export default function Home() {
                         className="publish-btn"
                         variant="filled"
                     >
-                        Publică o cursă acum
+                        {API.getTranslation("publish_ride", language)}
                     </LinkButton>
                     <h1 className="big-title">
-                        Economisește 100% din valoarea cursei
+                        {API.getTranslation("header_4", language)}
                     </h1>
                 </Flex>
                 <Flex
@@ -195,16 +159,16 @@ export default function Home() {
                 >
                     <div className="card card-btns">
                         <LinkButton className="btn-link" href="/about">
-                            Despre noi
+                            {API.getTranslation("about_us", language)}
                         </LinkButton>
                         <LinkButton className="btn-link" href="/how-it-works">
-                            Cum funcționează
+                            {API.getTranslation("how_it_works", language)}
                         </LinkButton>
                         <LinkButton className="btn-link" href="/security">
-                            Securitate
+                            {API.getTranslation("security", language)}
                         </LinkButton>
                         <LinkButton className="btn-link" href="/support">
-                            Suport clienți
+                            {API.getTranslation("support_clients", language)}
                         </LinkButton>
                     </div>
                     <Flex className="middle-part" dir="column" align="center">
@@ -214,7 +178,7 @@ export default function Home() {
                             href="/tos"
                             iconed={false}
                         >
-                            Termeni și condiții
+                            {API.getTranslation("terms_conditions", language)}
                         </LinkButton>
                         <img
                             src="/assets/oogoLogoWhite.png"
@@ -238,7 +202,7 @@ export default function Home() {
                                 API.updateTheme();
                             }}
                         >
-                            Schimbă tema
+                            {API.getTranslation("change_theme", language)}
                         </LinkButton>
                         <LinkButton
                             className="link-btn"

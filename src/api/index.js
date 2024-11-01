@@ -1,7 +1,8 @@
 import axios from "axios";
+import config from "../config.json";
 
 export default class API {
-    static language = "ro";
+    static language = config.default_translation;
     static base = axios.create({
         baseURL: `http://localhost:3000/${this.language}/api`,
         headers: {
@@ -83,7 +84,6 @@ export default class API {
     static updateTheme() {
         const theme = this.getTheme();
         const root = document.documentElement;
-        console.log(theme, root);
 
         root.style.setProperty(
             "--go_primary",
@@ -136,6 +136,23 @@ export default class API {
                 "#fff"
             );
         }
+    }
+
+    static setLanguage(params) {
+        const { lang } = params;
+
+        if(lang && config.supported_translations.includes(lang)) {
+            this.language = lang;
+            return lang;
+        }
+
+        this.language = config.default_translation;
+        return this.language;
+    }
+
+    static getTranslation(key, lang) {
+        console.log("Getting translation for ", key, "in", lang);
+        return config.translations[key][lang] || config.translations[key][config.default_translation] || "Could not find translation for this item";
     }
 
     static expiredCache(idx) {

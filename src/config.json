@@ -1,0 +1,113 @@
+{
+    "supported_translations": ["en", "ro", "ru"],
+    "default_translation": "ro",
+    "default_currency": "RON",
+    "supported_currencies": ["RON", "EUR", "USD"],
+    "translations": {
+        "header_1": {
+            "ro": "Caută curse spre locația dorită, și în siguranță",
+            "en": "Search for rides to your desired location, and safely",
+            "ru": "Ищите поездки в нужное вам место и безопасно"
+        },
+        "feature_1_title": {
+            "ro": "Încredere maximă",
+            "en": "Maximum trust",
+            "ru": "Максимальное доверие"
+        },
+        "feature_1": {
+            "ro": "Călătorești în siguranță, cu mașini atent verificate de echipa Oogo.",
+            "en": "Travel safely, with cars carefully checked by the Oogo team.",
+            "ru": "Путешествуйте безопасно, с машинами, тщательно проверенными командой Oogo."
+        },
+        "feature_2_title": {
+            "ro": "Preferințele curselor",
+            "en": "Ride preferences",
+            "ru": "Предпочтения поездок"
+        },
+        "feature_2": {
+            "ro": "Ai șansa de ați alege preferințele cursei pe care o dorești.",
+            "en": "You have the chance to choose the preferences of the ride you want.",
+            "ru": "У вас есть возможность выбрать предпочтения поездки, которую вы хотите."
+        },
+        "feature_3_title": {
+            "ro": "Costuri reduse",
+            "en": "Accesible prices",
+            "ru": "Снижение затрат"
+        },
+        "feature_3": {
+            "ro": "Oogo oferă costuri reduse pentru cursele tale, fără a scădea calitatea serviciilor.",
+            "en": "Oogo offers low costs for your rides, without reducing the quality of the services.",
+            "ru": "Oogo предлагает низкие цены на ваши поездки, не снижая качество услуг."
+        },
+        "feature_4_title": {
+            "ro": "Suport 24/7",
+            "en": "24/7 support",
+            "ru": "Поддержка 24/7"
+        },
+        "feature_4": {
+            "ro": "Echipa Oogo este disponibilă non-stop pentru a vă ajuta cu orice problemă.",
+            "en": "The Oogo team is available 24/7 to help you with any problem.",
+            "ru": "Команда Oogo доступна 24/7, чтобы помочь вам с любой проблемой."
+        },
+        "search_rides": {
+            "ro": "Caută curse astăzi",
+            "en": "Search for rides today",
+            "ru": "Ищите поездки сегодня"
+        },
+        "header_2": {
+            "ro": "Siguranța ta este în mâinile noastre",
+            "en": "Your safety is in our hands",
+            "ru": "Ваша безопасность в наших руках"
+        },
+        "help_for_help": {
+            "ro": "Ajută-ne să te protejăm",
+            "en": "Help us to protect you",
+            "ru": "Помогите нам защитить вас"
+        },
+        "header_3": {
+            "ro": "Cele mai căutate curse",
+            "en": "The most searched rides",
+            "ru": "Самые популярные поездки"
+        },
+        "publish_ride": {
+            "ro": "Publică o cursă acum",
+            "en": "Publish a ride now",
+            "ru": "Опубликуйте поездку сейчас"
+        },
+        "header_4": {
+            "ro": "Economisește 100% din valoarea cursei",
+            "en": "Save 100% of the ride value",
+            "ru": "Сэкономьте 100% от стоимости поездки"
+        },
+        "about_us": {
+            "ro": "Despre noi",
+            "en": "About us",
+            "ru": "О нас"
+        },
+        "how_it_works": {
+            "ro": "Cum funcționează",
+            "en": "How it works",
+            "ru": "Как это работает"
+        },
+        "security": {
+            "ro": "Securitate",
+            "en": "Security",
+            "ru": "Безопасность"
+        },
+        "support_clients": {
+            "ro": "Suport clienți",
+            "en": "Customer support",
+            "ru": "Поддержка клиентов"
+        },
+        "terms_conditions": {
+            "ro": "Termeni și condiții",
+            "en": "Terms and conditions",
+            "ru": "Условия"
+        },
+        "change_theme": {
+            "ro": "Schimbă tema",
+            "en": "Change theme",
+            "ru": "Изменить тему"
+        }
+    }
+}
