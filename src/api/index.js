@@ -1,8 +1,9 @@
 import axios from "axios";
 
 export default class API {
+    static language = "ro";
     static base = axios.create({
-        baseURL: "http://localhost:3000/api",
+        baseURL: `http://localhost:3000/${this.language}/api`,
         headers: {
             "Content-Type": "application/json"
         }
