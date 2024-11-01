@@ -1,4 +1,5 @@
 {
+    "api_base_url": "http://localhost:3000",
     "supported_translations": ["en", "ro", "ru"],
     "default_translation": "ro",
     "default_currency": "RON",
@@ -108,6 +109,96 @@
             "ro": "Schimbă tema",
             "en": "Change theme",
             "ru": "Изменить тему"
+        },
+        "email_enter": {
+            "ro": "Introdu adresa de email",
+            "en": "Enter your email address",
+            "ru": "Введите адрес электронной почты"
+        },
+        "password_enter": {
+            "ro": "Introdu parola",
+            "en": "Enter your password",
+            "ru": "Введите пароль"
+        },
+        "password": {
+            "ro": "Parola",
+            "en": "Password",
+            "ru": "Пароль"
+        },
+        "login": {
+            "ro": "Conectează-te",
+            "en": "Log in",
+            "ru": "Войти"
+        },
+        "register": {
+            "ro": "Înregistrează-te",
+            "en": "Register",
+            "ru": "Зарегистрироваться"
+        },
+        "register_message_promote": {
+            "ro": "Beneficiază de cursele fără taxe",
+            "en": "Benefit from rides without fees",
+            "ru": "Пользуйтесь поездками без комиссий"
+        },
+        "required_field": {
+            "ro": "Câmp-ul este obligatoriu",
+            "en": "This field is required",
+            "ru": "Обязательное поле"
+        },
+        "email_check": {
+            "ro": "Adresa de email trebuie să fie de forma: adresa@domeniu.com",
+            "en": "The email address must be in the form: address@domain.com",
+            "ru": "Адрес электронной почты должен быть в форме: адрес@домен.com"
+        },
+        "email_length_check": {
+            "ro": "Adresa de email trebuie să aibă între {0} și {1} caractere",
+            "en": "The email address must be between {0} and {1} characters",
+            "ru": "Адрес электронной почты должен содержать от {0} до  символов"
+        },
+        "success_login_title": {
+            "ro": "Autentificare reușită",
+            "en": "Login successful",
+            "ru": "Вход выполнен успешно"
+        },
+        "success_login_message": {
+            "ro": "Te-ai conectat cu succes, vei fi redirecționat în curând.",
+            "en": "You have successfully logged in, you will be redirected soon.",
+            "ru": "Вы успешно вошли в систему, вас скоро перенаправят."
+        },
+        "success_logout_title": {
+            "ro": "Deconectare reușită",
+            "en": "Logout successful",
+            "ru": "Выход выполнен успешно"
+        },
+        "success_logout_message": {
+            "ro": "Te-ai deconectat cu succes, vei fi redirecționat în curând.",
+            "en": "You have successfully logged out, you will be redirected soon.",
+            "ru": "Вы успешно вышли из системы, вас скоро перенаправят."
+        },
+        "error_logout_title": {
+            "ro": "Deconectare eșuată",
+            "en": "Logout failed",
+            "ru": "Ошибка выхода"
+        },
+        "error_logout_message": {
+            "ro": "Deconectarea a eșuat, încearcă din nou mai târziu.",
+            "en": "Logout failed, try again later.",
+            "ru": "Ошибка выхода, попробуйте позже."
+        },
+        "logout": {
+            "ro": "Deconectează-te",
+            "en": "Logout",
+            "ru": "Выход"
+        },
+        "add_ride": {
+            "ro": "Adaugă o cursă",
+            "en": "Add a ride",
+            "ru": "Добавить поездку"
+        },
+        "profile": {
+            "ro": "Profilul meu",
+            "en": "My profile",
+            "ru": "Мой профиль"
         }
     }
 }

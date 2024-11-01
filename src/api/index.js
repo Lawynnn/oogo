@@ -150,9 +150,18 @@ export default class API {
         return this.language;
     }
 
-    static getTranslation(key, lang) {
+    static getTranslation(key, lang, ...args) {
         console.log("Getting translation for ", key, "in", lang);
-        return config.translations[key][lang] || config.translations[key][config.default_translation] || "Could not find translation for this item";
+        let translation = config.translations[key][lang] || config.translations[key][config.default_translation] || "Could not find translation for this item";
+        if(!args.length) {
+            return translation;
+        }
+        
+        for(let i = 0; i < args.length; i++) {
+            translation = translation.replace(`{${i}}`, args[i]);
+        }
+
+        return translation;
     }
 
     static expiredCache(idx) {

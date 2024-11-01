@@ -1,45 +1,44 @@
 import React from "react";
 import "../styles/NavComponent.css";
 import { Popup } from "./Popup";
-import API from "../api";
 import Avatar from "./Avatar";
 import Flex from "./Flex";
-import ButtonComponent from "./ButtonComponent";
 import LinkButton from "./LinkButton";
-
-import { User, Car, LogOut, Ban } from "lucide-react";
-import Alert from "./Alert";
-import ComboBox from "./ComboBox";
+import { User, Car, LogOut } from "lucide-react";
+import useAPI from "../hooks/useAPI";
+import { useAlert } from "../hooks/useAlert";
+import useTranslation from "../hooks/useTranslation";
+import useCache from "../hooks/useCache";
 
 export default function NavComponent(props) {
-    const [user, setUser] = React.useState(null);
     const [pop, setPop] = React.useState(false);
 
-    const [error, setError] = React.useState(false);
-    const [title, setTitle] = React.useState("");
-    const [description, setDescription] = React.useState("");
-    const [loading, setLoading] = React.useState(false);
-    const [showAlert, setShowAlert] = React.useState(false);
+    const api = useAPI();
+    const alert = useAlert();
+    const userCache = useCache("user");
+    if (!userCache.cache) {
+        console.log("No user cache found");
+    }
 
-    React.useEffect(() => {
-        const u = API.getCache("user");
-        if (!u) {
-            return console.log("UNAUTHORIZED");
-        }
+    userCache.cache && userCache.expired && userCache.deleteCache();
 
-        setUser(u);
-    }, []);
+    const { translate, getLanguage } = useTranslation();
+
     return (
         <>
             <div className="navbar-wrapper">
                 <nav className="navbar">
-                    <header className="navbar-header" onClick={(e) => (window.location.href = "/")}>
+                    <header
+                        className="navbar-header"
+                        onClick={(e) =>
+                            (window.location.href = `/${getLanguage()}`)
+                        }
+                    >
                         <img
                             className="navbar-logo"
                             src="/assets/oogoLogoWhite.png"
                             alt="Logo"
                         />
-                        {/* <span className="logo-text">oogo.</span> */}
                     </header>
                     <footer className="navbar-footer">
                         <Popup
@@ -49,27 +48,31 @@ export default function NavComponent(props) {
                             float={"bottom"}
                             header={
                                 <Avatar
-                                    src={user?.avatar}
+                                    src={userCache.cache?.avatar}
                                     onClick={(e) => setPop(!pop)}
                                 >
                                     <Avatar.Placeholder>
-                                        {user?.names?.first[0] +
-                                            user?.names?.last[0] || "GO"}
+                                        {userCache.cache?.names?.first[0] +
+                                            userCache.cache?.names?.last[0] || "GO"}
                                     </Avatar.Placeholder>
                                 </Avatar>
                             }
                         >
                             <Flex dir="column" align="flex-start" gap="5px">
-                                {!user ? (
+                                {!userCache.cache ? (
                                     <>
-                                        <LinkButton href="/login">
-                                            Conectează-te
+                                        <LinkButton
+                                            href={`${getLanguage()}/login`}
+                                        >
+                                            {translate("login")}
                                         </LinkButton>
                                         <LinkButton
-                                            desc="Beneficiază de cursele fără taxe"
-                                            href="/register"
+                                            desc={translate(
+                                                "register_message_promote"
+                                            )}
+                                            href={`${getLanguage()}/register`}
                                         >
-                                            Înregistrează-te
+                                            {translate("register")}
                                         </LinkButton>
                                     </>
                                 ) : (
@@ -77,46 +80,55 @@ export default function NavComponent(props) {
                                         <LinkButton
                                             icon={User}
                                             desc={`${
-                                                user?.names?.first +
+                                                userCache.cache?.names?.first +
                                                 " " +
-                                                user?.names?.last
+                                                userCache.cache?.names?.last
                                             }`}
-                                            href="/profile"
+                                            href={`${getLanguage()}/profile`}
                                         >
-                                            Profilul meu
+                                            {translate("profile")}
                                         </LinkButton>
                                         <LinkButton
-                                            href="/rides/add"
+                                            href={`${getLanguage()}/rides/add`}
                                             icon={Car}
                                         >
-                                            Adaugă o cursă
+                                            {translate("add_ride")}
                                         </LinkButton>
                                         <LinkButton
                                             icon={LogOut}
                                             className="danger"
                                             onClick={async (e) => {
-                                                setLoading(true);
-                                                const res = await API.logout(user.token);
-                                                if (res.success) {
-                                                    API.deleteCache("user");
-                                                    setShowAlert(true);
-                                                    setError(false);
-                                                    setTitle(
-                                                        "Te-ai deconectat cu succes!"
+                                                const r = await api.logout();
+                                                if (r.success) {
+                                                    return alert.showAlert(
+                                                        translate(
+                                                            "success_logout_message"
+                                                        ),
+                                                        translate(
+                                                            "success_logout_title"
+                                                        ),
+                                                        "success",
+                                                        3000,
+                                                        500,
+                                                        () => {
+                                                            window.location.href = `/${getLanguage()}`;
+                                                        }
                                                     );
-                                                    setDescription(
-                                                        "Te-ai deconectat cu succes, vei fi redirecționat în câteva secunde..."
-                                                    );
-                                                } else {
-                                                    setError(true);
-                                                    setLoading(false);
-                                                    setTitle("Eroare la deconectare");
-                                                    setDescription(res.message);
-                                                    setShowAlert(true);
                                                 }
+                                                alert.showAlert(
+                                                    translate(
+                                                        "error_logout_message"
+                                                    ),
+                                                    translate(
+                                                        "error_logout_title"
+                                                    ),
+                                                    "error",
+                                                    3000,
+                                                    500
+                                                );
                                             }}
                                         >
-                                            Deconectează-te
+                                            {translate("logout")}
                                         </LinkButton>
                                     </>
                                 )}
@@ -126,25 +138,6 @@ export default function NavComponent(props) {
                 </nav>
                 {props.children}
             </div>
-            <Alert
-                type={error ? "error" : "success"}
-                title={title}
-                description={description}
-                show={showAlert}
-                timeout={3000}
-                onTimeoutEnded={() => {
-                    if (error) {
-                        setLoading(false);
-                        setShowAlert(false);
-                        return;
-                    }
-
-                    setLoading(false);
-                    window.location.reload();
-                }}
-            >
-                <Ban className="icon"></Ban>
-            </Alert>
         </>
     );
 }

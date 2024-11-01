@@ -5,9 +5,11 @@ import ButtonComponent from "../components/ButtonComponent";
 import API from "../api";
 import { Check, ChevronRight } from "lucide-react";
 import Form from "../components/Form";
-import Alert from "../components/Alert";
 import NavComponent from "../components/NavComponent";
 import { Group } from "../components/Group";
+import useTranslation from "../hooks/useTranslation";
+import useAPI from "../hooks/useAPI";
+import { useAlert } from "../hooks/useAlert";
 
 export default function Login() {
     const [loading, setLoading] = React.useState(false);
@@ -16,10 +18,16 @@ export default function Login() {
     const [config, setConfig] = React.useState({});
     const [checks, setChecks] = React.useState(new Map());
     const [error, setError] = React.useState(null);
-    const [showAlert, setShowAlert] = React.useState(false);
+
+    const { translate, getLanguage } = useTranslation();
+    const api = useAPI();
+    const alert = useAlert();
 
     React.useEffect(() => {
         API.updateTheme();
+    });
+
+    React.useEffect(() => {
         (async () => {
             const data = await API.getConfig();
             if (data.success) setConfig(data.config);
@@ -45,16 +53,13 @@ export default function Login() {
                         <InputComponent
                             type="text"
                             placeholder="E-mail"
-                            description="Introdu adresa de email"
-                            onInput={(e) =>
-                                setEmail(e.target.value) &&
-                                console.log("Email", e.target.value)
-                            }
+                            description={translate("email_enter")}
+                            onInput={(e) => setEmail(e.target.value)}
                             check={(val) => {
                                 if (!val) {
                                     return {
                                         success: false,
-                                        message: "Câmpul este obligatoriu",
+                                        message: translate("required_field"),
                                     };
                                 }
                                 if (
@@ -63,7 +68,11 @@ export default function Login() {
                                 ) {
                                     return {
                                         success: false,
-                                        message: `Adresa de email trebuie să aibă între ${config.email_len[0]} și ${config.email_len[1]} caractere`,
+                                        message: translate(
+                                            "email_length_check",
+                                            config.email_len[0],
+                                            config.email_len[1]
+                                        ),
                                     };
                                 }
 
@@ -72,8 +81,7 @@ export default function Login() {
                                 if (!emailRegex.test(val)) {
                                     return {
                                         success: false,
-                                        message:
-                                            "Adresa de email trebuie să fie de forma: adresa@domeniu.com",
+                                        message: translate("email_check"),
                                     };
                                 }
 
@@ -94,14 +102,14 @@ export default function Login() {
                     >
                         <InputComponent
                             type="password"
-                            placeholder="Parola"
-                            description="Introdu parola ta"
+                            placeholder={translate("password")}
+                            description={translate("password_enter")}
                             onInput={(e) => setPassword(e.target.value)}
                             check={(val) => {
                                 if (!val) {
                                     return {
                                         success: false,
-                                        message: "Câmpul este obligatoriu",
+                                        message: translate("required_field"),
                                     };
                                 }
                                 return { success: true, message: "" };
@@ -111,23 +119,32 @@ export default function Login() {
                 </Form>
 
                 <ButtonComponent
-                    text="Conectează-te"
+                    text={translate("login")}
                     onClick={async (e) => {
                         if (!email || !password) {
                             return;
                         }
 
                         setLoading(true);
-                        const data = await API.login(email, password);
-                        console.log(data);
-                        if (data.success) {
-                            const user = await API.getUser(data.token);
-                            API.cache("user", user.user);
-                            setShowAlert(true);
-                        } else {
-                            setError(data.message);
+
+                        const d = await api.login(email, password);
+                        if (!d.success) {
+                            setError(d.message);
                             setLoading(false);
+                            return;
                         }
+                        setLoading(false);
+
+                        alert.showAlert(
+                            translate("success_login_message"),
+                            translate("success_login_title"),
+                            "success",
+                            3000,
+                            500,
+                            () => {
+                                window.location.href = `/${getLanguage()}`;
+                            }
+                        );
                     }}
                     loading={loading}
                     icon={ChevronRight}
@@ -138,19 +155,6 @@ export default function Login() {
                     }
                 ></ButtonComponent>
             </Container>
-            <Alert
-                type="success"
-                title="Logare validă"
-                description="Te-ai logat cu succes, vei fi redirecționat în câteva secunde..."
-                show={showAlert}
-                timeout={2000}
-                onTimeoutEnded={() => {
-                    setLoading(false);
-                    window.location.href = "/";
-                }}
-            >
-                <Check className="icon"></Check>
-            </Alert>
         </>
     );
 }

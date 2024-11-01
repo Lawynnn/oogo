@@ -1,85 +1,75 @@
-.alert-wrapper {
+.alert {
+    padding: 20px;
+    border-radius: var(--go_br_secondary);
+    background: var(--go_secondary);
     position: fixed;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    width: clamp(200px, 80%, 400px);
-    cursor: pointer;
-    transition: all .3s ease-in-out;
-    opacity: 1;
+    border: 10px solid var(--go_primary);
+    width: clamp(150px, 90%, 500px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 20px;
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.alert-wrapper[show="true"] {
+.alert.fade-in {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
 }
 
-.alert-wrapper[show="false"] {
+.alert.fade-out {
     opacity: 0;
-    transform: translateX(-50%) translateY(100%);
+    transform: translateX(-50%) translateY(100px);
 }
 
-.alert-wrapper .alert {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    column-gap: 20px;
-    padding: 15px 20px;
-    border: 1px solid rgba(255, 255, 255, .15);
-    border-radius: 10px;
-    background: black;
-    pointer-events: none;
+:root {
+    --go_alert_error: #FF4848;
+    --go_alert_border_error: #ff0000;
+
+    --go_alert_warning: #FFD948;
+    --go_alert_border_warning: #f0c310;
+
+    --go_alert_info: #48D7FF;
+    --go_alert_border_info: #0f9cb7;
+
+    --go_alert_success: #48FF6E;
+    --go_alert_border_success: #0f9c3b;
 }
 
-.alert-wrapper[type="success"] .alert {
-    background: #3f743f;
-    color: #00ff00;
+.alert .alert-header .icon {
+    width: 30px;
+    color: var(--go_tertiary);
 }
 
-.alert-wrapper[type="error"] .alert {
-    background: #552424;
-    color: #ff0000;
+.alert .alert-footer .alert-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--go_text);
 }
 
-.alert-wrapper[type="warning"] .alert {
-    background: #7f7f3f;
-    color: #ffff00;
-}
-
-.alert-wrapper[type="info"] .alert {
-    background: black;
-}
-
-
-.alert-wrapper .alert .alert-header {
-    pointer-events: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    column-gap: 10px;
-    justify-content: flex-start;
-}
-
-.alert-wrapper .alert .alert-header .icon {
-    width: 16px;
-}
-
-.alert-wrapper .alert .alert-footer {
-    display: flex;
-    flex-direction: column;
-    pointer-events: none;
-}
-
-.alert-wrapper .alert .alert-footer .alert-title {
-    font-size: 16px;
+.alert .alert-footer .alert-description {
+    font-size: 1rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, .8);
-    margin: 0;
 }
 
-.alert-wrapper .alert .alert-footer .alert-description {
-    font-size: 14px;
-    color: rgba(255, 255, 255, .6);
-    margin: 0;
+.alert.error {
+    background: var(--go_alert_error);
+    border-color: var(--go_alert_border_error);
+}
+
+.alert.error .alert-header .icon, .alert.error .alert-footer .alert-title, .alert.error .alert-footer .alert-description {
+    color: white;
+}
+
+.alert.warning {
+    background: var(--go_alert_warning);
+    border-color: var(--go_alert_border_warning);
+}
+
+.alert.success {
+    background: var(--go_alert_success);
+    border-color: var(--go_alert_border_success);
 }

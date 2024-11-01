@@ -13,17 +13,12 @@ import {
 } from "lucide-react";
 import Flex from "../components/Flex";
 import Card from "../components/Card";
-import { useParams } from "react-router-dom";
+import useTranslation from "../hooks/useTranslation";
 
 export default function Home() {
-    const params = useParams();
-    const [language, setLanguage] = React.useState(API.language);
-
+    const { translate } = useTranslation();
     React.useEffect(() => {
         API.updateTheme();
-        API.setLanguage(params);
-        setLanguage(API.language);
-        console.log(API.language);
     }, []);
     return (
         <>
@@ -34,7 +29,7 @@ export default function Home() {
             </NavComponent>
             <Flex className="sections" dir="column" align="center" gap="0px">
                 <h1 className="big-title">
-                    {API.getTranslation("header_1", language)}
+                    {translate("header_1")}
                 </h1>
 
                 <Flex
@@ -46,23 +41,23 @@ export default function Home() {
                 >
                     <Card
                         circle="left"
-                        title={API.getTranslation("feature_1_title", language)}
-                        description={API.getTranslation("feature_1", language)}
+                        title={translate("feature_1_title")}
+                        description={translate("feature_1")}
                     />
                     <Card
                         circle="left"
-                        title={API.getTranslation("feature_2_title", language)}
-                        description={API.getTranslation("feature_2", language)}
+                        title={translate("feature_2_title")}
+                        description={translate("feature_2")}
                     />
                     <Card
                         circle="right"
-                        title={API.getTranslation("feature_3_title", language)}
-                        description={API.getTranslation("feature_3", language)}
+                        title={translate("feature_3_title")}
+                        description={translate("feature_3")}
                     />
                     <Card
                         circle="right"
-                        title={API.getTranslation("feature_4_title", language)}
-                        description={API.getTranslation("feature_4", language)}
+                        title={translate("feature_4_title")}
+                        description={translate("feature_4")}
                     />
                 </Flex>
                 <Flex
@@ -76,7 +71,7 @@ export default function Home() {
                         className="search-rides-btn"
                         variant="filled"
                     >
-                        {API.getTranslation("search_rides", language)}
+                        {translate("search_rides")}
                     </LinkButton>
                 </Flex>
                 <Flex
@@ -86,14 +81,14 @@ export default function Home() {
                     justify="space-between"
                 >
                     <h1 className="big-title">
-                        {API.getTranslation("header_2", language)}
+                        {translate("header_2")}
                     </h1>
                     <LinkButton
                         iconed={false}
                         className="safe-btn"
                         variant="filled"
                     >
-                        {API.getTranslation("help_for_help", language)}
+                        {translate("help_for_help")}
                     </LinkButton>
                 </Flex>
                 <Flex
@@ -103,7 +98,7 @@ export default function Home() {
                     justify="center"
                     gap="20px"
                 >
-                    <h1 className="big-title">{API.getTranslation("header_3", language)}</h1>
+                    <h1 className="big-title">{translate("header_3")}</h1>
                     <Flex
                         className="buttons"
                         dir="row"
@@ -145,10 +140,10 @@ export default function Home() {
                         className="publish-btn"
                         variant="filled"
                     >
-                        {API.getTranslation("publish_ride", language)}
+                        {translate("publish_ride")}
                     </LinkButton>
                     <h1 className="big-title">
-                        {API.getTranslation("header_4", language)}
+                        {translate("header_4")}
                     </h1>
                 </Flex>
                 <Flex
@@ -159,16 +154,16 @@ export default function Home() {
                 >
                     <div className="card card-btns">
                         <LinkButton className="btn-link" href="/about">
-                            {API.getTranslation("about_us", language)}
+                            {translate("about_us")}
                         </LinkButton>
                         <LinkButton className="btn-link" href="/how-it-works">
-                            {API.getTranslation("how_it_works", language)}
+                            {translate("how_it_works")}
                         </LinkButton>
                         <LinkButton className="btn-link" href="/security">
-                            {API.getTranslation("security", language)}
+                            {translate("security")}
                         </LinkButton>
                         <LinkButton className="btn-link" href="/support">
-                            {API.getTranslation("support_clients", language)}
+                            {translate("support_clients")}
                         </LinkButton>
                     </div>
                     <Flex className="middle-part" dir="column" align="center">
@@ -178,7 +173,7 @@ export default function Home() {
                             href="/tos"
                             iconed={false}
                         >
-                            {API.getTranslation("terms_conditions", language)}
+                            {translate("terms_conditions")}
                         </LinkButton>
                         <img
                             src="/assets/oogoLogoWhite.png"
@@ -202,7 +197,7 @@ export default function Home() {
                                 API.updateTheme();
                             }}
                         >
-                            {API.getTranslation("change_theme", language)}
+                            {translate("change_theme")}
                         </LinkButton>
                         <LinkButton
                             className="link-btn"
