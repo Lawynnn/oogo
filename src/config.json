@@ -4,6 +4,7 @@
     "default_translation": "ro",
     "default_currency": "RON",
     "supported_currencies": ["RON", "EUR", "USD"],
+    "default_theme": "light",
     "translations": {
         "header_1": {
             "ro": "Caută curse spre locația dorită, și în siguranță",
@@ -199,6 +200,21 @@
             "ro": "Profilul meu",
             "en": "My profile",
             "ru": "Мой профиль"
+        },
+        "from": {
+            "ro": "De la...",
+            "en": "From...",
+            "ru": "От..."
+        },
+        "to": {
+            "ro": "Către...",
+            "en": "To...",
+            "ru": "К..."
+        },
+        "search_ride": {
+            "ro": "Caută cursă",
+            "en": "Search ride",
+            "ru": "Поиск поездки"
         }
     }
 }

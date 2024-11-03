@@ -23,14 +23,10 @@ export default function Home() {
     return (
         <>
             <NavComponent>
-                <div className="ride-wrapper">
-                    <RideSearch></RideSearch>
-                </div>
+                <RideSearch />
             </NavComponent>
             <Flex className="sections" dir="column" align="center" gap="0px">
-                <h1 className="big-title">
-                    {translate("header_1")}
-                </h1>
+                <h1 className="big-title">{translate("header_1")}</h1>
 
                 <Flex
                     className="section secondary-section features-section"
@@ -80,9 +76,7 @@ export default function Home() {
                     align="center"
                     justify="space-between"
                 >
-                    <h1 className="big-title">
-                        {translate("header_2")}
-                    </h1>
+                    <h1 className="big-title">{translate("header_2")}</h1>
                     <LinkButton
                         iconed={false}
                         className="safe-btn"
@@ -142,9 +136,7 @@ export default function Home() {
                     >
                         {translate("publish_ride")}
                     </LinkButton>
-                    <h1 className="big-title">
-                        {translate("header_4")}
-                    </h1>
+                    <h1 className="big-title">{translate("header_4")}</h1>
                 </Flex>
                 <Flex
                     className="section tertiary-section footer-section"

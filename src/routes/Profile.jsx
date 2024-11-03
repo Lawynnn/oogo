@@ -8,6 +8,7 @@ import API from "../api";
 import Avatar from "../components/Avatar";
 import InputComponent from "../components/InputComponent";
 import { Save, X } from "lucide-react";
+import RideSearch from "../components/RideSearch";
 
 export default function Profile() {
     const [user, setUser] = React.useState(null);
@@ -24,7 +25,9 @@ export default function Profile() {
     }, []);
     return (
         <>
-            <NavComponent></NavComponent>
+            <NavComponent>
+                {/* <RideSearch /> */}
+            </NavComponent>
             <Container dir="column" align="center" justify="center" gap="10px">
                 <Group
                     title="Setările personale"

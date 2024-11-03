@@ -10,7 +10,7 @@ import config from "../config.json";
 export default function useTranslation() {
     const { lang } = useParams();
 
-    const selectedLanguage = useMemo(() => lang || config.default_translation, [lang]);
+    const selectedLanguage = useMemo(() => config.supported_translations.includes(lang) ? lang : config.default_translation, [lang]);
 
     /**
      * 

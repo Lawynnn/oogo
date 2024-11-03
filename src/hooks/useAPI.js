@@ -87,7 +87,12 @@ export default function useAPI(baseURL = config.api_base_url) {
         return response;
     }, [userCache]);
 
-
+    /**
+     * @type {(query: string) => Promise<{success: boolean, data?: [{country?: string, city?: string, county?: string, state?: string, coords: [number, number], formatted?: string}], error?: string, message?: string}>
+     */
+    const searchLocation = React.useCallback(async (query) => {
+        return handle(base.get(`/ride/location/${encodeURIComponent(query)}`));
+    }, [base, handle]);
 
 
     return {
@@ -95,6 +100,7 @@ export default function useAPI(baseURL = config.api_base_url) {
         handle,
         login,
         user,
-        logout
+        logout,
+        searchLocation
     }
 }

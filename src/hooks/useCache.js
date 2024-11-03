@@ -19,7 +19,7 @@ export default function useCache(idx) {
             ...data
         }
         const expiresDate = new Date().getTime() + expires * 1000;
-        f.__expires = expiresDate;
+        f.__expires = expires < 1 ? -1 : expiresDate;
         f.__current = new Date().getTime();
         localStorage.setItem(idx, JSON.stringify(f));
     }, [idx]);
@@ -28,6 +28,10 @@ export default function useCache(idx) {
         if (!cache) {
             return true;
         }
+        if(cache.__expires < 1) {
+            return false;
+        }
+
         return cache.__expires < new Date().getTime();
     }, [cache]);
 

@@ -1,0 +1,77 @@
+.calendar-input {
+    max-width: 150px;
+}
+
+.calendar-input .calendar-input-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-input .calendar-input-body .calendar-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.calendar-input .calendar-input-body .calendar-title .calendar-input-button {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: var(--go_text_secondary);
+    background: var(--go_primary);
+    border-radius: var(--go_br_tertiary);
+    border: 4px solid var(--go_secondary);
+    padding: 5px;
+}
+
+.calendar-input .calendar-input-body .calendar-title .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    column-gap: 5px;
+}
+
+.calendar-input .calendar-input-body .calendar-title .title .month {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.calendar-input .calendar-input-body .calendar-title .title .year {
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.calendar-input .calendar-input-body .calendar-table table {
+    width: 100%;
+}
+
+.calendar-input .calendar-input-body .calendar-table table thead tr {
+    color: var(--go_text_primary);
+}
+
+.calendar-input .calendar-input-body .calendar-table table tbody tr .day {
+    cursor: pointer;
+    padding: 0 3px;
+    text-align: center;
+    border-radius: var(--go_br_tertiary);
+    border: 4px solid transparent;
+    background: transparent;
+    transition: background 0.3s;
+}
+
+.calendar-input .calendar-input-body .calendar-table table tbody tr .day.today {
+    color: var(--go_text_primary);
+    font-weight: bold;
+}
+
+.calendar-input .calendar-input-body .calendar-table table tbody tr .day:not(.selected):hover {
+    background: var(--go_secondary);
+}
+
+.calendar-input .calendar-input-body .calendar-table table tbody tr .day.selected {
+    border: 4px solid var(--go_secondary);
+    background: var(--go_primary);
+}
